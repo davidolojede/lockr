@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "KeyGen",
+    "version": "1.0.0",
+    "description": "",
+    "action": {
+            "default_popup": "index.html",
+            "default_icon": ""
+    },
+    "content_scripts": {
+            "js": ["gen.js"]
+    },
+    "permission":[]
+}
