@@ -40,7 +40,7 @@
                     </div>
                     <div class="generator-section">
                         <div class="password-header">
-                            <p>Generated Password</p>
+                            <p class="subhead">Generated Password</p>
                         </div>
 
                         <div class="password-display">
@@ -51,66 +51,50 @@
                         </div>
 
                         <div class="strength-meter">
-
+                            <p id="strength-grade">Strong</p>
+                            <div class="strength-bars">
+                                <div id="weak-bar" class="bar"></div>
+                                <div id="medium-bar" class="bar"></div>
+                                <div id="strong-bar" class="bar"></div>
+                                <div id="very-strong-bar" class="bar"></div>
+                            </div>
                         </div>
 
                         <div class="customization">
-                            <p>Password Length: <span>16</span></p>
-                            <input type="range" value="">
+                            <p class="subhead">Customize your password</p>
+                            <p>Password Length: <span id="password-length">16</span></p>
+                            <input id="range-control" type="range" value="5" max="16" min="4">
 
                             <div class="custom-checkboxes">
                                 <div class="uppercase-check">
-                                    <div class="radio">
-                                        <label class="container">
-                                            <input type="checkbox" checked="checked" />
-                                            <div class="checkmark"></div>
-                                        </label>
-                                    </div>
-
-                                    <p>Uppercase (A-Z)</p>
+                                    <input id="add-uppercase" checked="" class="check" type="checkbox">
+                                    <label for="add-uppercase">Uppercase (A-Z)</label>
                                 </div>
 
                                 <div class="lowercase-check">
-                                      <div class="radio">
-                                        <label class="container">
-                                            <input type="checkbox" checked="checked" />
-                                            <div class="checkmark"></div>
-                                        </label>
-                                    </div>
-
-                                    <p>Lowercase (a-z)</p>
+                                    <input id="add-lowercase" checked="" class="check" type="checkbox">
+                                    <label for="add-lowercase">Lowercase (a-z)</label>
                                 </div>
 
                                 <div class="number-check">
-                                      <div class="radio">
-                                        <label class="container">
-                                            <input type="checkbox" checked="checked" />
-                                            <div class="checkmark"></div>
-                                        </label>
-                                    </div>
-
-                                    <p>Numbers (0-9)</p>
+                                    <input id="add-number" checked="" class="check" type="checkbox">
+                                    <label for="add-number">Numbers (0-9)</label>
                                 </div>
 
                                 <div class="symbol-check">
-                                      <div class="radio">
-                                        <label class="container">
-                                            <input type="checkbox" checked="checked" />
-                                            <div class="checkmark"></div>
-                                        </label>
-                                    </div>
-          
-                                    <p>Symbols (!@#)</p>
+                                    <input id="add-symbol" checked="" class="check" type="checkbox">
+                                    <label for="add-symbol">Symbols (!@#)</label>
+
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn">ICON Generate Password</button>
+                        <button class="generate-btn"><img src="/assets/generate.png" alt=""> Generate Password</button>
                     </div>
                 </div>
 
                 <div class="history-container">
                     <div class="history-header">
-                        <p>
+                        <p class="subhead">
                             <span class="material-symbols-outlined history-icon icons">
                                 history
                             </span>
@@ -124,11 +108,26 @@
                     </div>
 
                     <ul class="ex-password-list">
-                        <!-- <li>
-                            <span class="material-symbols-outlined copy-icon-lg icons">
+                        <li class="ex-password">
+                            <p>7fdlsiwr992274</p>
+                            <span class="material-symbols-outlined copy-icon icons">
                                 content_copy
                             </span>
-                        </li> -->
+                        </li>
+
+                        <li class="ex-password">
+                            <p>7fdlsiwr992274</p>
+                            <span class="material-symbols-outlined copy-icon icons">
+                                content_copy
+                            </span>
+                        </li>
+
+                        <li class="ex-password">
+                            <p>7fdlsiwr992274</p>
+                            <span class="material-symbols-outlined copy-icon icons">
+                                content_copy
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -139,13 +138,13 @@
                 <div class="security-card">
                     <img src="" alt="">
                     <div class="info">
-                        <h4>Your Security Matters</h4>
+                        <h4 class="subhead">Your Security Matters</h4>
                         <p>Strong passwords protect your accounts from unauthorized access and keep your data safe.</p>
                     </div>
                 </div>
 
                 <div class="strength-guide">
-                    <h4>Password Strength Guide</h4>
+                    <h4 class="subhead">Password Strength Guide</h4>
                     <div class="meter-grades">
                         <div class="grade">
                             ICON
@@ -166,7 +165,7 @@
                         <div class="grade">
                             ICON
                             <span>
-                                <p id="strong">strong</p>
+                                <p id="strong">Strong</p>
                                 Great! Hard to crack
                             </span>
                         </div>
@@ -181,28 +180,29 @@
                     </div>
                 </div>
 
-                <div class="security-tips"></div>
-                <h4>Tips for a Strong Password
-                    <span class="material-symbols-outlined bulb-icon icons">
-                        lightbulb
-                    </span>
-                </h4>
-                <div class="tips">
-                    <p>Use at least 12 characters</p>
-                    <p>Mix uppercase, lowercase, numbers & symbols</p>
-                    <p>Avoid using personal information</p>
-                    <p>Don't reuse password across sites</p>
+                <div class="security-tips">
+                    <div class="security-header">
+                        <h4 class="subhead">Tips for a Strong Password</h4>
+                        <span class="material-symbols-outlined bulb-icon icons">
+                            lightbulb
+                        </span>
+                    </div>
+                    <div class="tips">
+                        <p>Use at least 12 characters</p>
+                        <p>Mix uppercase, lowercase, numbers & symbols</p>
+                        <p>Avoid using personal information</p>
+                        <p>Don't reuse password across sites</p>
+                    </div>
                 </div>
             </div>
 
 
             <!-- FOOTER -->
             <footer>
-                <span>
                     <span class="material-symbols-outlined lock-icon icons">
                         lock
-                    </span>
-                    Your passwords are generated locally and never stored. 100% private & secure</span>
+                    </span> 
+                     <span>Your passwords are generated locally and never stored. 100% private & secure</span>
             </footer>
         </div>
     </section>
