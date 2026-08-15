@@ -1,24 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PassGen</title>
+    <title>Lockr - Password Generator</title>
+    <link rel="shortcut icon" href="/assets/lockr-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="lockr-ui.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h1>Generate a <span>Random Password</span></h1>
-        <div class="display">
-            <input type="text" id="password" placeholder="Password">
-            <img onclick="copyPassword()" src="/rpg_img/copy.png">
-        </div>
-        <button onclick="generatePassword()"><img src="/rpg_img/generate.png" alt=""> Generate Password</button>
-    </div>
 
+<body>
+    <nav>
+        <div class="left-nav">
+            <img src="/assets/lockr-icon-name.png" alt="">
+        </div>
+        <div class="right-nav">
+            <label class="switch">
+                <input checked type="checkbox" class="checkbox">
+                <div class="slider"></div>
+            </label>
+        </div>
+    </nav>
+
+
+    <!-- BODY -->
+    <section>
+        <div class="overall-container">
+            <div class="content-container">
+                <div class="generator-layout">
+                    <div class="hero">
+                        <h2>Generate Strong. <span>Stay Secure</span></h2>
+                        <p>Create a random, highly secure password in seconds.</p>
+                    </div>
+                    <div class="generator-section">
+                        <div class="password-header">
+                            <p>Generated Password</p>
+                        </div>
+
+                        <div class="password-display">
+                            <h2>7fklsiwr992274</h2>
+                            <span class="material-symbols-outlined copy-icon-lg icons">
+                                content_copy
+                            </span>
+                        </div>
+
+                        <div class="strength-meter">
+
+                        </div>
+
+                        <div class="customization">
+                            <p>Password Length: <span>16</span></p>
+                            <input type="range" value="">
+
+                            <div class="custom-checkboxes">
+                                <div class="uppercase-check">
+                                    <div class="radio">
+                                        <label class="container">
+                                            <input type="checkbox" checked="checked" />
+                                            <div class="checkmark"></div>
+                                        </label>
+                                    </div>
+
+                                    <p>Uppercase (A-Z)</p>
+                                </div>
+
+                                <div class="lowercase-check">
+                                      <div class="radio">
+                                        <label class="container">
+                                            <input type="checkbox" checked="checked" />
+                                            <div class="checkmark"></div>
+                                        </label>
+                                    </div>
+
+                                    <p>Lowercase (a-z)</p>
+                                </div>
+
+                                <div class="number-check">
+                                      <div class="radio">
+                                        <label class="container">
+                                            <input type="checkbox" checked="checked" />
+                                            <div class="checkmark"></div>
+                                        </label>
+                                    </div>
+
+                                    <p>Numbers (0-9)</p>
+                                </div>
+
+                                <div class="symbol-check">
+                                      <div class="radio">
+                                        <label class="container">
+                                            <input type="checkbox" checked="checked" />
+                                            <div class="checkmark"></div>
+                                        </label>
+                                    </div>
+          
+                                    <p>Symbols (!@#)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="generate-btn">ICON Generate Password</button>
+                    </div>
+                </div>
+
+                <div class="history-container">
+                    <div class="history-header">
+                        <p>
+                            <span class="material-symbols-outlined history-icon icons">
+                                history
+                            </span>
+                            Password History
+                        </p>
+                        <button>
+                            <span class="material-symbols-outlined delete-icon icons">
+                                delete
+                            </span>
+                            Clear All</button>
+                    </div>
+
+                    <ul class="ex-password-list">
+                        <!-- <li>
+                            <span class="material-symbols-outlined copy-icon-lg icons">
+                                content_copy
+                            </span>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="security-card">
+                    <img src="" alt="">
+                    <div class="info">
+                        <h4>Your Security Matters</h4>
+                        <p>Strong passwords protect your accounts from unauthorized access and keep your data safe.</p>
+                    </div>
+                </div>
+
+                <div class="strength-guide">
+                    <h4>Password Strength Guide</h4>
+                    <div class="meter-grades">
+                        <div class="grade">
+                            ICON
+                            <span>
+                                <p id="weak">Weak</p>
+                                Too short or missing character types
+                            </span>
+                        </div>
+
+                        <div class="grade">
+                            ICON
+                            <span>
+                                <p id="medium">Medium</p>
+                                Good, but can be stronger
+                            </span>
+                        </div>
+
+                        <div class="grade">
+                            ICON
+                            <span>
+                                <p id="strong">strong</p>
+                                Great! Hard to crack
+                            </span>
+                        </div>
+
+                        <div class="grade">
+                            ICON
+                            <span>
+                                <p id="very-strong">Very Strong</p>
+                                Excellent! Highly secure
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="security-tips"></div>
+                <h4>Tips for a Strong Password
+                    <span class="material-symbols-outlined bulb-icon icons">
+                        lightbulb
+                    </span>
+                </h4>
+                <div class="tips">
+                    <p>Use at least 12 characters</p>
+                    <p>Mix uppercase, lowercase, numbers & symbols</p>
+                    <p>Avoid using personal information</p>
+                    <p>Don't reuse password across sites</p>
+                </div>
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer>
+                <span>
+                    <span class="material-symbols-outlined lock-icon icons">
+                        lock
+                    </span>
+                    Your passwords are generated locally and never stored. 100% private & secure</span>
+            </footer>
+        </div>
+    </section>
     <script src="/lockr-engine.js"></script>
 </body>
+
 </html>
