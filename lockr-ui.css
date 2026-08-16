@@ -5,7 +5,8 @@
   --light-blue: #0f2c4e;
   --medium-color: #fee648;
   --weak-color: #ff6053;
-  --border-color: #224d7557;
+  --border-color: #1E293B;
+  --card-bg: #111827b2;
 }
 
 * {
@@ -15,7 +16,9 @@
 }
 
 body {
-  background: #002339;
+  background: radial-gradient(circle at top left, #111827 -40%, transparent 20%),
+    radial-gradient(circle at bottom right, #111827 -50%, transparent 30%),
+    var(--bg-color);
   color: white;
   font-family: "Google Sans", sans-serif;
 }
@@ -25,7 +28,8 @@ nav {
   display: flex;
   padding: 20px 150px;
   justify-content: space-between;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-color);
 }
 
 .left-nav img {
@@ -78,16 +82,27 @@ nav {
 
 
 /* CONTENT */
+section {
+  height: 100%;
+}
+
 .overall-container {
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
+  border-top: none;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  row-gap: 35px;
   height: 100%;
   max-height: 100vh;
   margin-left: 10vw;
   margin-right: 10vw;
-  padding: 35px 30px;
+  padding: 35px 30px 0px 30px;
   border-radius: 25px;
+  background-color: var(--bg-color);
+}
+
+.content-container {
+  width: 96%;
 }
 
 .hero {
@@ -109,10 +124,10 @@ nav {
 }
 
 .generator-section {
-  background: #2849725b;
-  width: 90%;
+  background: var(--card-bg);
+  /* width: 90%; */
   border-radius: 20px;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   padding: 25px 20px;
   margin: 15px 0;
   display: flex;
@@ -127,7 +142,7 @@ nav {
 
 .password-display {
   display: flex;
-  background-color: #2849725b;
+  background-color: #0d1b2bde;
   border-radius: 10px;
   border: 1px solid var(--border-color);
   align-items: center;
@@ -318,10 +333,10 @@ nav {
 
 /* HISTORY SECTION */
 .history-container {
-  background: #2849725b;
-  width: 90%;
+  background: var(--card-bg);
+  /* width: 90%; */
   border-radius: 20px;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   padding: 25px 20px;
   margin: 15px 0;
   display: flex;
@@ -381,51 +396,81 @@ nav {
 /* SIDEBAR */
 .sidebar {
   width: 100%;
+
 }
+
 .security-card {
-  background: #2849725b;
+  background: var(--card-bg);
   border-radius: 20px;
-  border: 2px solid var(--border-color);
-  padding: 25px 20px;
+  border: 1px solid var(--border-color);
+  padding: 17px 10px;
   margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.neon-shield {
+  width: 120px;
+}
+
+.info {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.info{
-  display: flex;
-  flex-direction:column;
-  gap: 10px;
-}
-.info p{
+.info p {
   font-size: 16px;
 }
 
 .strength-guide {
-  background: #2849725b;
+  background: var(--card-bg);
   border-radius: 20px;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   padding: 25px 20px;
   margin: 15px 0;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  
+
 }
- 
+
 .meter-grades {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
+
 .grade {
-  display:flex;
-  gap: 10px;
-  align-items:center;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
-.grade span{
+.grade img {
+  width: 20px;
+  padding: 7px;
+  border-radius: 50%;
+}
+
+.weak-img {
+  background-color:#d60e0e25;
+}
+
+.medium-img {
+  background-color: #ff615321;
+}
+
+.strong-img {
+  background-color: #fee64823;
+}
+
+.very-strong-img {
+  background-color: #00aa662a;
+}
+
+.grade span {
   font-size: 16px;
 }
 
@@ -434,25 +479,25 @@ nav {
 }
 
 #weak {
-
+  color: #d60e0e;
 }
 
-#medium{
-
+#medium {
+  color: #ff6053;
 }
 
-#strong{
-
+#strong {
+  color: #fee648;
 }
 
-#very-strong{
-
+#very-strong {
+  color: #00aa65;
 }
 
 .security-tips {
-  background: #2849725b;
+  background: var(--card-bg);
   border-radius: 20px;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   padding: 25px 20px;
   margin: 15px 0;
   display: flex;
@@ -460,7 +505,7 @@ nav {
   gap: 16px;
 }
 
-.security-header{
+.security-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -474,7 +519,18 @@ nav {
 .tips {
   display: flex;
   flex-direction: column;
-  gap:15px;
+  gap: 15px;
+}
+
+.tip-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+}
+
+.tip-container span {
+  color: var(--deep-green);
 }
 
 footer {
@@ -484,6 +540,8 @@ footer {
   justify-content: center;
   font-size: 15px;
   color: rgba(255, 255, 255, 0.466);
+  grid-column: 1/-1;
+  margin-bottom: 20px
 }
 
 .lock-icon {

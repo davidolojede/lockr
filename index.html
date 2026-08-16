@@ -15,14 +15,14 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body id="body">
     <nav>
         <div class="left-nav">
             <img src="/assets/lockr-icon-name.png" alt="">
         </div>
         <div class="right-nav">
             <label class="switch">
-                <input checked type="checkbox" class="checkbox">
+                <input id="theme-switch" onclick="changeTheme()" checked type="checkbox" class="checkbox">
                 <div class="slider"></div>
             </label>
         </div>
@@ -136,7 +136,7 @@
             <!-- SIDEBAR -->
             <div class="sidebar">
                 <div class="security-card">
-                    <img src="" alt="">
+                    <img class="neon-shield" src="/assets/shields/neon-shield.png" alt="">
                     <div class="info">
                         <h4 class="subhead">Your Security Matters</h4>
                         <p>Strong passwords protect your accounts from unauthorized access and keep your data safe.</p>
@@ -147,7 +147,7 @@
                     <h4 class="subhead">Password Strength Guide</h4>
                     <div class="meter-grades">
                         <div class="grade">
-                            ICON
+                            <img src="/assets/shields/weak-shield.png" class="weak-img" alt="">
                             <span>
                                 <p id="weak">Weak</p>
                                 Too short or missing character types
@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="grade">
-                            ICON
+                            <img src="/assets/shields/medium-shield.png" class="medium-img" alt="">
                             <span>
                                 <p id="medium">Medium</p>
                                 Good, but can be stronger
@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="grade">
-                            ICON
+                            <img src="/assets/shields/strong-shield.png" class="strong-img" alt="">
                             <span>
                                 <p id="strong">Strong</p>
                                 Great! Hard to crack
@@ -171,7 +171,7 @@
                         </div>
 
                         <div class="grade">
-                            ICON
+                            <img src="/assets/shields/very-strong-shield.png" class="very-strong-img" alt="">
                             <span>
                                 <p id="very-strong">Very Strong</p>
                                 Excellent! Highly secure
@@ -188,10 +188,25 @@
                         </span>
                     </div>
                     <div class="tips">
-                        <p>Use at least 12 characters</p>
-                        <p>Mix uppercase, lowercase, numbers & symbols</p>
-                        <p>Avoid using personal information</p>
-                        <p>Don't reuse password across sites</p>
+                        <div class="tip-container">
+                            <span class="material-symbols-outlined">check</span>
+                            <p>Use at least 12 characters</p>
+                        </div>
+
+                        <div class="tip-container">
+                            <span class="material-symbols-outlined">check</span>
+                            <p>Mix uppercase, lowercase, numbers & symbols</p>
+                        </div>
+
+                        <div class="tip-container">
+                            <span class="material-symbols-outlined">check</span>
+                            <p>Avoid using personal information</p>
+                        </div>
+
+                        <div class="tip-container">
+                            <span class="material-symbols-outlined">check</span>
+                            <p>Don't reuse password across sites</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -199,10 +214,10 @@
 
             <!-- FOOTER -->
             <footer>
-                    <span class="material-symbols-outlined lock-icon icons">
-                        lock
-                    </span> 
-                     <span>Your passwords are generated locally and never stored. 100% private & secure</span>
+                <span class="material-symbols-outlined lock-icon icons">
+                    lock
+                </span>
+                <span>Your passwords are generated locally and never stored. 100% private & secure</span>
             </footer>
         </div>
     </section>
