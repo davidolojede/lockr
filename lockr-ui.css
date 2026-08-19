@@ -21,6 +21,12 @@ body {
     var(--bg-color);
   color: white;
   font-family: "Google Sans", sans-serif;
+  height: 100vh;
+}
+
+.dark-theme {
+  --bg-color: white;
+  color:black;
 }
 
 /* NAVIGATION BAR */
@@ -164,8 +170,17 @@ section {
   background-color: var(--border-color);
   border-radius: 8px;
   padding: 9px;
+  cursor: pointer;
+  transition: 0.1 ease-out;
 }
 
+.copy-icon-lg:hover{
+  background-color:#2b3b55b7;
+}
+
+.copy-icon-lg:active{
+   background-color: #0f2c4e;
+}
 .strength-meter {
   display: flex;
   color: var(--deep-green);
@@ -173,6 +188,10 @@ section {
   align-items: center;
   gap: 15px;
   margin-top: 10px;
+}
+
+.no-display{
+  display:none
 }
 
 .strength-meter p {
@@ -202,14 +221,14 @@ section {
   font-size: 16px;
 }
 
-#password-length {
+#length-display {
   color: var(--deep-green);
   font-size: 20px;
   font-weight: 700;
   margin-left: 5px;
 }
 
-#range-control {
+#range {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -222,7 +241,7 @@ section {
   margin-top: 8px;
 }
 
-#range-control::-webkit-slider-thumb {
+#range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   background: white;
@@ -309,8 +328,8 @@ section {
 
 
 .generate-btn {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,8 +343,13 @@ section {
   align-self: center;
   cursor: pointer;
   color: white;
+  font-family:  "Google Sans", sans-serif;
+  transition: 0.3s ease-out
 }
 
+.generate-btn:hover {
+  background-color: #07b871;
+}
 .generate-btn img {
   width: 20px;
 }
@@ -334,7 +358,6 @@ section {
 /* HISTORY SECTION */
 .history-container {
   background: var(--card-bg);
-  /* width: 90%; */
   border-radius: 20px;
   border: 1px solid var(--border-color);
   padding: 25px 20px;
@@ -343,6 +366,7 @@ section {
   flex-direction: column;
   gap: 20px;
   overflow: hidden;
+  min-height: 150px;
 }
 
 .history-header {
@@ -360,7 +384,7 @@ section {
   gap: 8px;
 }
 
-.history-header button {
+#clearAllBtn {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -371,15 +395,30 @@ section {
   border-radius: 7px;
   font-size: 17px;
   font-family: "Google Sans", sans-serif;
+  transition: 0.3s ease-out;
+  cursor:pointer;
 }
 
-.ex-password-list {
-  display: flex;
+#clearAllBtn:hover {
+  background-color: var(--border-color);
+}
+
+#ex-password-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   list-style: none;
+  flex:1;
+  align-items: center;
 }
 
-.ex-password-list li {
+#empty-msg {
+  color: grey;
+  font-size: 16px;
+  text-align: center;
+}
+
+#ex-password-list li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -389,9 +428,22 @@ section {
   border-radius: 5px;
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.281);
+  transition: 0.3s ease-out;
+  max-height: 25px;
 }
 
+#ex-password-list li:hover {
+  background-color: var(--border-color) ;
+}
 
+#ex-password-list li p {
+  flex: 1;
+  text-align:center;
+}
+
+#ex-password-list li span {
+  cursor: pointer;
+}
 
 /* SIDEBAR */
 .sidebar {

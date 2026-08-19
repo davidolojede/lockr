@@ -15,7 +15,7 @@
         rel="stylesheet">
 </head>
 
-<body id="body">
+<body>
     <nav>
         <div class="left-nav">
             <img src="/assets/lockr-icon-name.png" alt="">
@@ -44,14 +44,14 @@
                         </div>
 
                         <div class="password-display">
-                            <h2>7fklsiwr992274</h2>
-                            <span class="material-symbols-outlined copy-icon-lg icons">
+                            <h2 id="gen-pass">**********</h2>
+                            <span id="copy-btn" onclick="copyPassword()" class="material-symbols-outlined copy-icon-lg icons">
                                 content_copy
                             </span>
                         </div>
 
                         <div class="strength-meter">
-                            <p id="strength-grade">Strong</p>
+                            <p id="strength-grade"></p>
                             <div class="strength-bars">
                                 <div id="weak-bar" class="bar"></div>
                                 <div id="medium-bar" class="bar"></div>
@@ -62,8 +62,8 @@
 
                         <div class="customization">
                             <p class="subhead">Customize your password</p>
-                            <p>Password Length: <span id="password-length">16</span></p>
-                            <input id="range-control" type="range" value="5" max="16" min="4">
+                            <p>Password Length: <span id="length-display"></span></p>
+                            <input id="range" type="range" value="8" max="16" min="4">
 
                             <div class="custom-checkboxes">
                                 <div class="uppercase-check">
@@ -88,7 +88,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="generate-btn"><img src="/assets/generate.png" alt=""> Generate Password</button>
+                        <button onclick="generatePassword()" class="generate-btn"><img src="/assets/generate.png"
+                                alt=""> Generate Password</button>
                     </div>
                 </div>
 
@@ -100,34 +101,14 @@
                             </span>
                             Password History
                         </p>
-                        <button>
+                        <button id="clearAllBtn" >
                             <span class="material-symbols-outlined delete-icon icons">
                                 delete
                             </span>
                             Clear All</button>
                     </div>
 
-                    <ul class="ex-password-list">
-                        <li class="ex-password">
-                            <p>7fdlsiwr992274</p>
-                            <span class="material-symbols-outlined copy-icon icons">
-                                content_copy
-                            </span>
-                        </li>
-
-                        <li class="ex-password">
-                            <p>7fdlsiwr992274</p>
-                            <span class="material-symbols-outlined copy-icon icons">
-                                content_copy
-                            </span>
-                        </li>
-
-                        <li class="ex-password">
-                            <p>7fdlsiwr992274</p>
-                            <span class="material-symbols-outlined copy-icon icons">
-                                content_copy
-                            </span>
-                        </li>
+                    <ul id="ex-password-list">
                     </ul>
                 </div>
             </div>
