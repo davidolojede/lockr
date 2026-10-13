@@ -1,5 +1,6 @@
 let history = []
 let exPasswordList = document.getElementById("ex-password-list")
+let clearAllBtn = document.getElementById("clearAllBtn")
 
 let output = document.getElementById("gen-pass")
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -27,17 +28,14 @@ let themeSwitch = document.getElementById("theme-switch")
 
 themeSwitch.addEventListener("click", () => {
     document.body.classList.toggle("dark-theme")
-    if (document.body.classList === "dark-theme") {
-
-    } else {
-
-    }
 })
 
 const generatePassword = () => {
     let password = ""
     let allChar = ""
     let grade = 0
+    const bars = document.getElementsByClassName("bar")
+    const strengthDisplay = document.getElementById("strength-grade")
 
     if (addUpperCase.checked) {
         allChar += upperCase
@@ -57,54 +55,54 @@ const generatePassword = () => {
         grade += 0
     }
 
+    if (!allChar.length) {
+        output.textContent = ""
+        strengthDisplay.innerText = "Select a character type"
+        strengthDisplay.style.color = ""
+        for (let bar of bars) {
+            bar.style.backgroundColor = "#334155"
+        }
+        return
+    }
+
     while (length > password.length) {
         let calcEngine = Math.floor(Math.random() * allChar.length)
         password += allChar[calcEngine]
     }
-    output.innerHTML = password
-
-    const bars = document.getElementsByClassName("bar")
-    const weakBar = document.getElementById("weak-bar")
-    const mediumBar = document.getElementById("medium-bar")
-    const strongBar = document.getElementById("strong-bar")
-    const veryStrongBar = document.getElementById("very-strong-bar")
-    const strengthDisplay = document.getElementById("strength-grade")
+    output.textContent = password
 
     const meterDisplay = () => {
+        let activeBars
+        let strength
+        let color
+
         if (grade <= 5) {
-            mediumBar.classList.toggle("no-display")
-            strengthDisplay.innerText = "Weak"
-            strengthDisplay.style.color = "#d60e0e"
-            for (let bar of bars) {
-                bar.style.backgroundColor = "#d60e0e"
-            }
-
+            activeBars = 1
+            strength = "Weak"
+            color = "#d60e0e"
         } else if (grade <= 10) {
-            strongBar.classList.toggle("no-display")
-            strengthDisplay.innerText = "Medium"
-            strengthDisplay.style.color = "#ff6053"
-            for (let bar of bars) {
-                bar.style.backgroundColor = "#ff6053"
-            }
-
+            activeBars = 2
+            strength = "Medium"
+            color = "#ff6053"
         } else if (grade <= 15) {
-            veryStrongBar.classList.toggle("no-display")
-            strengthDisplay.innerText = "Strong"
-            strengthDisplay.style.color = "#fee648"
-            for (let bar of bars) {
-                bar.style.backgroundColor = "#fee648"
-            }
+            activeBars = 3
+            strength = "Strong"
+            color = "#fee648"
         } else {
-            strengthDisplay.innerText = "Very Strong"
-            strengthDisplay.style.color = "#00aa65"
-            for (let bar of bars) {
-                bar.style.backgroundColor = "#00aa65"
-            }
+            activeBars = 4
+            strength = "Very Strong"
+            color = "#00aa65"
         }
+
+        strengthDisplay.innerText = strength
+        strengthDisplay.style.color = color
+        Array.from(bars).forEach((bar, index) => {
+            bar.style.backgroundColor = index < activeBars ? color : "#334155"
+        })
     }
     meterDisplay()
 
-    const saveToHistory = (index) => {
+    const saveToHistory = () => {
         exPasswordList.innerHTML = ""
         history.unshift(password)
         if (history.length > 3) {
@@ -113,15 +111,16 @@ const generatePassword = () => {
 
         for (let i = 0; i < history.length; i++) {
             let exPassword = document.createElement("li")
-            exPassword.innerHTML += `
-            <p>${history[i]}</p>
-            <span id="copy-ex-password" class="material-symbols-outlined copy-icon icons">content_copy</span>`
+            let passwordText = document.createElement("p")
+            passwordText.textContent = history[i]
+            let copyExPassword = document.createElement("span")
+            copyExPassword.className = "material-symbols-outlined copy-icon icons"
+            copyExPassword.textContent = "content_copy"
+            exPassword.append(passwordText, copyExPassword)
             exPasswordList.appendChild(exPassword)
 
-            const copyExPassword = document.getElementById("copy-ex-password")
             copyExPassword.addEventListener("click", () => {
                 navigator.clipboard.writeText(history[i])
-                console.log("Clicked");
             })
         }
     }
@@ -140,10 +139,7 @@ clearAllBtn.addEventListener("click", (e) => {
 
 const emptyHistory = () => {
     if (history.length === 0) {
-        exPasswordList.style.gridTemplateColumns = "1fr"
         exPasswordList.innerHTML = `<p id="empty-msg">History is empty.</p>`
-    } else {
-        exPasswordList.style.gridTemplateColumns = "1fr 1fr 1fr"
     }
 }
 emptyHistory()

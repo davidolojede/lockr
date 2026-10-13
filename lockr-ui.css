@@ -12,7 +12,7 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
     var(--bg-color);
   color: white;
   font-family: "Google Sans", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .dark-theme {
@@ -32,7 +32,7 @@ body {
 /* NAVIGATION BAR */
 nav {
   display: flex;
-  padding: 20px 150px;
+  padding: 20px clamp(20px, 8vw, 120px);
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--bg-color);
@@ -89,17 +89,17 @@ nav {
 
 /* CONTENT */
 section {
-  height: 100%;
+  min-height: calc(100vh - 70px);
 }
 
 .overall-container {
   border: 1px solid var(--border-color);
   border-top: none;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
   row-gap: 35px;
-  height: 100%;
-  max-height: 100vh;
+  height: auto;
+  max-height: none;
   margin-left: 10vw;
   margin-right: 10vw;
   padding: 35px 30px 0px 30px;
@@ -109,6 +109,7 @@ section {
 
 .content-container {
   width: 96%;
+  min-width: 0;
 }
 
 .hero {
@@ -161,6 +162,8 @@ section {
   font-weight: 900;
   /* font-family: 'Courier New', Courier, monospace; */
   flex: 2;
+  min-width: 0;
+  overflow-wrap: anywhere;
   text-align: center;
 }
 
@@ -207,7 +210,7 @@ section {
 .bar {
   height: 11px;
   width: 70px;
-  background-color: var(--deep-green);
+  background-color: #334155;
 }
 
 .customization {
@@ -405,7 +408,7 @@ section {
 
 #ex-password-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
   gap: 20px;
   list-style: none;
   flex:1;
@@ -429,7 +432,7 @@ section {
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.281);
   transition: 0.3s ease-out;
-  max-height: 25px;
+  min-width: 0;
 }
 
 #ex-password-list li:hover {
@@ -439,6 +442,7 @@ section {
 #ex-password-list li p {
   flex: 1;
   text-align:center;
+  overflow-wrap: anywhere;
 }
 
 #ex-password-list li span {
@@ -598,4 +602,178 @@ footer {
 
 .lock-icon {
   font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .overall-container {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 20px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 25px 24px 0;
+  }
+
+  .content-container {
+    width: 100%;
+  }
+
+  .sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .sidebar > * {
+    margin: 0;
+  }
+
+  .security-tips {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 14px 18px;
+  }
+
+  .left-nav img {
+    width: 130px;
+  }
+
+  .overall-container {
+    margin: 0;
+    padding: 22px 16px 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+  }
+
+  .hero h2 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+
+  .generator-section,
+  .history-container {
+    padding: 20px 16px;
+  }
+
+  .password-display {
+    gap: 10px;
+    padding: 14px 10px;
+  }
+
+  .password-display h2 {
+    font-size: 24px;
+  }
+
+  .copy-icon-lg {
+    font-size: 28px;
+    padding: 7px;
+  }
+
+  .strength-meter {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .strength-meter p {
+    font-size: 17px;
+  }
+
+  .strength-bars {
+    gap: 6px;
+  }
+
+  .bar {
+    width: 42px;
+    height: 8px;
+  }
+
+  .custom-checkboxes {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px 20px;
+  }
+
+  .custom-checkboxes > div {
+    flex: 1 1 40%;
+    min-width: 0;
+  }
+
+  .custom-checkboxes label {
+    font-size: 14px;
+  }
+
+  .generate-btn {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .history-header {
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .history-header p {
+    white-space: nowrap;
+  }
+
+  #clearAllBtn {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    font-size: 0;
+  }
+
+  #clearAllBtn .delete-icon {
+    font-size: 20px;
+  }
+
+  #ex-password-list {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 10px;
+  }
+
+  #ex-password-list li {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .security-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .security-card .neon-shield {
+    width: 100px;
+    align-self: center;
+  }
+
+  .security-card .info {
+    width: 100%;
+  }
+
+  .security-tips {
+    grid-column: auto;
+  }
+
+  footer {
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.5;
+  }
 }
